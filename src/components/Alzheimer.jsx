@@ -165,7 +165,7 @@ function BrainTumor({ api_key, roboURL, ngrokURL }) {
             <div className="bg-white bg-opacity-25 border font-bold border-black  border-4  rounded-lg p-2 mb-6">
               Please note the following inference
             </div>
-            <div className="2bg-white bg-opacity-25 border min-h-96 border-black border-4 rounded-lg p-2">
+            <div className="2bg-white bg-opacity-25 border min-h-96 border-black text-black border-4 rounded-lg p-2">
               {!responseImage && loading && (
                 <div className="w-full mt-4 animate-pulse h-96 bg-slate-400 rounded-lg"></div>
               )}
