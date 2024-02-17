@@ -149,7 +149,7 @@ function BrainTumor({ api_key, roboURL, ngrokURL }) {
   };
 
   return (
-    <div className="bg-gray-200 h-screen p-10 text-center">
+    <div className=" bg-white h-screen p-10 text-center">
       <div className="container mx-auto py-16 relative h-full">
         <div className="text-start flex flex-row justify-between">
           <div>
