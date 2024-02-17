@@ -23,7 +23,7 @@ const classifierURL = "https://detect.roboflow.com/main-x9qfk/1"
 const classifierAPI = "w2BkwXK1FTb2Z8DcWdkp"
 
 // URL for ngrok for local testing
-const ngrokURL = "https://4277-103-4-222-252.ngrok-free.app"
+const ngrokURL = "https://7f0b-14-96-13-220.ngrok-free.app"
 
 const App = () => {
   return (
