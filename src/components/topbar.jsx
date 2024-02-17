@@ -1,6 +1,6 @@
 export const Appbar = () => {
   return (
-    <div className="shadow h-16 bg-gray-800 text-white flex justify-between border border-b-0 border-black items-center px-4">
+    <div className="shadow h-16 bg-slate-950  text-white flex justify-between border border-b-0 border-black items-center px-4">
       <div className="font-bold flex ">
         <h1 className="font-mono text-4xl mb-4 px-3">RadixAI</h1>
         <h2 font-mono text-2xl mb-4>
