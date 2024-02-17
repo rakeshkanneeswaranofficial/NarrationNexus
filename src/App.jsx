@@ -31,7 +31,7 @@ const App = () => {
       <div>
         <Appbar />
       </div>
-      <div className="flex  bg-blue-200 ">
+      <div className="flex  bg-gray-800 ">
 
         <BottomWarning buttonText={"Anterior Cruciate Ligament"} to={"/acl"}></BottomWarning>
         <BottomWarning buttonText={"Brain Tumor"} to={"/"}></BottomWarning>

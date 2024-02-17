@@ -66,7 +66,7 @@ function BrainTumor({ api_key, roboURL, ngrokURL }) {
       const formattedInference = inference
         .replace(/\*/g, ',') // Replace asterisks with commas
 
-  
+
       // Split the formatted inference at full stops and map each part to a paragraph element
       return formattedInference.split('.').map((sentence, index) => (
         <React.Fragment key={index}>
@@ -131,7 +131,7 @@ function BrainTumor({ api_key, roboURL, ngrokURL }) {
       return (
         <div>
           <div>File Details:</div>
-  
+
           <p>File Type: {selectedFile.type}</p>
           <p>
             Last Modified: {selectedFile.lastModifiedDate.toDateString()}
@@ -149,16 +149,15 @@ function BrainTumor({ api_key, roboURL, ngrokURL }) {
   };
 
   return (
-    <div className="bg-blue-200 h-screen p-10 text-center">
+    <div className="bg-gray-700 h-screen p-10 text-center">
       <div className="container mx-auto py-16 relative h-full">
         <div className="text-start flex flex-row justify-between">
           <div>
             {imageUrl && (
               <img
                 className="mt-8 w-min h-96"
-                src={`data:image/jpeg;base64,${
-                  !responseImage ? imageUrl : responseImage
-                }`}
+                src={`data:image/jpeg;base64,${!responseImage ? imageUrl : responseImage
+                  }`}
                 alt="Uploaded"
               />
             )}
@@ -169,11 +168,12 @@ function BrainTumor({ api_key, roboURL, ngrokURL }) {
             <div className="bg-white bg-opacity-25 border font-bold border-black rounded-lg p-2 mb-6">
               Please note the following inference
             </div>
-            <div className="2bg-white bg-opacity-25 border min-h-96 border-black rounded-lg p-2">
+            <div className="2bg-white bg-opacity-25 border min-h-96 text-white border-black rounded-lg p-2">
               {!responseImage && loading && (
                 <div className="w-full mt-4 animate-pulse h-96 bg-slate-400 rounded-lg"></div>
               )}
-               {renderInference()}
+              {renderInference()}
+
             </div>
           </div>
         </div>
@@ -185,7 +185,7 @@ function BrainTumor({ api_key, roboURL, ngrokURL }) {
             onChange={onFileChange}
           />
           <button
-            className="bg-blue-500 text-white w-30 px-4 py-2 rounded"
+            className="bg-slate-950 text-white w-30 px-4 py-2 rounded"
             onClick={onFileUpload}
           >
             Upload!
