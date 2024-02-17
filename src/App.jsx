@@ -31,12 +31,12 @@ const App = () => {
       <div>
         <Appbar />
       </div>
-      <div className="flex  bg-gray-800 ">
+      <div className="flex  bg-gray-800  border-b-black pb-2 ">
 
-        <BottomWarning buttonText={"Anterior Cruciate Ligament"} to={"/acl"}></BottomWarning>
+        {/* <BottomWarning buttonText={"Anterior Cruciate Ligament"} to={"/acl"}></BottomWarning> */}
         <BottomWarning buttonText={"Brain Tumor"} to={"/"}></BottomWarning>
         <BottomWarning buttonText={"Alzheimer"} to={"/alz"}></BottomWarning>
-        <BottomWarning buttonText={"Kidney Tumor"} to={"/kidenyStone"}></BottomWarning>
+        {/* <BottomWarning buttonText={"Kidney Tumor"} to={"/kidenyStone"}></BottomWarning> */}
 
 
 

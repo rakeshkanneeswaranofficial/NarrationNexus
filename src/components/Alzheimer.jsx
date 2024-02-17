@@ -146,7 +146,7 @@ function BrainTumor({ api_key, roboURL, ngrokURL }) {
   };
 
   return (
-    <div className="bg-blue-200 h-screen p-10 text-center">
+    <div className="bg-gray-700 h-screen p-10 text-center">
       <div className="container mx-auto py-16 relative h-full">
         <div className="text-start flex flex-row justify-between">
           <div>
@@ -182,7 +182,7 @@ function BrainTumor({ api_key, roboURL, ngrokURL }) {
             onChange={onFileChange}
           />
           <button
-            className="bg-blue-500 text-white w-30 px-4 py-2 rounded"
+            className="bg-slate-950 text-white w-30 px-4 py-2 rounded"
             onClick={onFileUpload}
           >
             Upload!
