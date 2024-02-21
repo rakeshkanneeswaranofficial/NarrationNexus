@@ -12,7 +12,7 @@ import AlzimerDetection from "./components/Alzheimer";
 import KindeyTumor from "./components/kidenyStone";
 import Classifier from "./components/classifier";
 
-const api_key = "MDUmhShkcQTpnD7H6ZtL";
+const api_key_robo = "MDUmhShkcQTpnD7H6ZtL";
 
 // URLs for different detection services
 const roboURLBrain = "https://detect.roboflow.com/gojo/1";
@@ -54,7 +54,7 @@ const App = () => {
           path="/"
           element={
             <BrainTumor
-              api_key={api_key}
+              api_key={api_key_robo}
               roboURL={roboURLBrain}
               ngrokURL={ngrokURL}
             />
@@ -67,7 +67,7 @@ const App = () => {
           path="/acl"
           element={
             <ACLdetection
-              api_key={api_key}
+              api_key={api_key_robo}
               roboURL={roboURLACL}
               ngrokURL={ngrokURL}
             />
@@ -78,7 +78,7 @@ const App = () => {
           path="/alz"
           element={
             <AlzimerDetection
-              api_key={api_key}
+              api_key={api_key_robo}
               roboURL={alzimerURL}
               ngrokURL={ngrokURL}
             />
@@ -91,7 +91,7 @@ const App = () => {
           path="/kidenyStone"
           element={
             <KindeyTumor
-              api_key={api_key}
+              api_key={api_key_robo}
               roboURL={KindeyTumorURL}
               ngrokURL={ngrokURL}
             />
