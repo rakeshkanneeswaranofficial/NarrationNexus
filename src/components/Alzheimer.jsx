@@ -147,7 +147,7 @@ function BrainTumor({ api_key, roboURL, ngrokURL }) {
 
   return (
     <div className="bg-gray-200 h-screen p-10 text-center">
-      <div className="container mx-auto py-16 relative h-full">
+      <div className="container mx-auto  relative h-full">
         <div className="text-start flex flex-row justify-between">
           <div>
             {imageUrl && (
@@ -175,14 +175,14 @@ function BrainTumor({ api_key, roboURL, ngrokURL }) {
           </div>
         </div>
 
-        <div className="flex flex-col space-y-4 absolute bottom-20 left-0 w-full">
+        <div className="flex flex-col space-y-4 absolute bottom-40 left-0 w-full">
           <input
             className="rounded-sm ml-auto"
             type="file"
             onChange={onFileChange}
           />
           <button
-            className="bg-slate-950 text-white w-30 px-4 py-2 rounded"
+            className="bg-slate-950 text-white w-30 px-4 py-2 rounded mx-96"
             onClick={onFileUpload}
           >
             Upload!
