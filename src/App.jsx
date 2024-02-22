@@ -16,15 +16,14 @@ const api_key_robo = "MDUmhShkcQTpnD7H6ZtL";
 const roboURLBrain = "https://detect.roboflow.com/gojo/1";
 const alzimerURL =
   "https://detect.roboflow.com/alzheimer-disease-detection-yolov5/1";
-// const roboURLACL =
-//   "https://detect.roboflow.com/classification-of-acl-injuriesv-v9dlc/6";
-// const KindeyTumorURL =
-//   "https://detect.roboflow.com/kidney-tumor-detection-golwd/2";
-// const classifierURL = "https://detect.roboflow.com/main-x9qfk/1";
+const roboURLACL = "https://detect.roboflow.com/classification-of-acl-injuriesv-v9dlc/6";
+const KindeyTumorURL =
+  "https://detect.roboflow.com/kidney-tumor-detection-golwd/2";
+const classifierURL = "https://detect.roboflow.com/main-x9qfk/1";
 const classifierAPI = "w2BkwXK1FTb2Z8DcWdkp";
 
 // URL for ngrok for local testing
-const ngrokURL = "https://437f-35-231-152-82.ngrok-free.app";
+const ngrokURL = "https://f7f0-35-231-152-82.ngrok-free.app";
 
 const App = () => {
   return (
