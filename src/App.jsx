@@ -8,7 +8,7 @@ import BrainTumor from "./components/brainTumor";
 import ACLdetection from "./components/acl";
 import AlzimerDetection from "./components/Alzheimer";
 import KindeyTumor from "./components/kidenyStone";
-import Classifier from "./components/classifier";
+
 
 const api_key_robo = "MDUmhShkcQTpnD7H6ZtL";
 
@@ -23,7 +23,7 @@ const classifierURL = "https://detect.roboflow.com/main-x9qfk/1";
 const classifierAPI = "w2BkwXK1FTb2Z8DcWdkp";
 
 // URL for ngrok for local testing
-const ngrokURL = "https://a7df-152-58-205-144.ngrok-free.app";
+const ngrokURL = "https://xth9xnbt-5000.inc1.devtunnels.ms/";
 
 const App = () => {
   return (
