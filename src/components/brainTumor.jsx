@@ -34,6 +34,7 @@ function BrainTumor({ api_key, roboURL, ngrokURL }) {
         },
         headers: {
           "Content-Type": "application/json",
+       
         },
       })
         .then((response) => {
