@@ -108,7 +108,7 @@ function BrainTumor({ api_key, roboURL, ngrokURL }) {
           setRoboflowResponse(JSON.stringify(response.data));
           console.log(response.data);
           setCoordinates({
-            x: response.data.predictions[0]["x"],
+            // x: response.data.predictions[0]["x"],
             y: response.data.predictions[0]["y"],
             width: response.data.predictions[0]["width"],
             height: response.data.predictions[0]["height"],
