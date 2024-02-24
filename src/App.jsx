@@ -32,10 +32,10 @@ const App = () => {
         <Appbar />
       </div>
       <div className="flex  bg-black  border-b-black pb-2 justify-center">
-        {/* <BottomWarning buttonText={"Anterior Cruciate Ligament"} to={"/acl"}></BottomWarning> */}
+        <BottomWarning buttonText={"Anterior Cruciate Ligament"} to={"/acl"}></BottomWarning>
         <BottomWarning buttonText={"Brain Tumor"} to={"/"}></BottomWarning>
         <BottomWarning buttonText={"Alzheimer"} to={"/alz"}></BottomWarning>
-        {/* <BottomWarning buttonText={"Kidney Tumor"} to={"/kidenyStone"}></BottomWarning> */}
+        <BottomWarning buttonText={"Kidney Tumor"} to={"/kidenyStone"}></BottomWarning>
       </div>
 
       <Routes>
