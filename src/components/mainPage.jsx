@@ -16,7 +16,7 @@ export function MainPage() {
           <AnimatedDescription></AnimatedDescription>
         </div>
 
-        <div className="text-black px-10 py-3 text-center  ">
+        <div className="text-black px-10 py-10 text-center  ">
           <h1 className="text-yellow-300 inline-block w-40 h-10 text-2xl rounded-lg  ">
             Get started
           </h1>
