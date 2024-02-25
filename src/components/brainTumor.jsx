@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { Appbar } from "./topbar";
 
 function BrainTumor({ api_key, roboURL, ngrokURL }) {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -151,7 +152,12 @@ function BrainTumor({ api_key, roboURL, ngrokURL }) {
   };
 
   return (
-    <div className="bg-white h-screen p-10 text-center">
+
+    <div>
+      <div>
+       <Appbar></Appbar>
+      </div>
+       <div className="bg-white h-screen p-10 text-center">
       <div className="container mx-auto  relative h-full">
         <div className="text-start flex flex-row justify-between">
           <div>
@@ -166,7 +172,7 @@ function BrainTumor({ api_key, roboURL, ngrokURL }) {
             {fileData()}
           </div>
 
-          <div className="w-1/2 text-xl rounded-lg overflow-y-scroll shadow-2xlh-1/2 -translate-y-6 ">
+          <div className="w-2/4 text-xl rounded-lg overflow-y-scroll shadow-2xl-black h-1/2 -translate-y-6 ">
             <div className="bg-white bg-opacity-25 border   font-bold border-black border-4 rounded-lg p-2 mb-6">
               Please note the following inference
             </div>
@@ -195,6 +201,9 @@ function BrainTumor({ api_key, roboURL, ngrokURL }) {
         </div>
       </div>
     </div>
+
+    </div>
+   
   );
 }
 

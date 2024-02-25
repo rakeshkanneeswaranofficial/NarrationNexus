@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Appbar } from "./components/topbar";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { BottomWarning } from "./components/bottomWarning";
+
+
 
 // Components for different CTs scans
 import BrainTumor from "./components/brainTumor";
 import ACLdetection from "./components/acl";
 import AlzimerDetection from "./components/Alzheimer";
 import KindeyTumor from "./components/kidenyStone";
+import { MainPage } from "./components/mainPage";
 
 
 const api_key_robo = "MDUmhShkcQTpnD7H6ZtL";
@@ -28,19 +30,16 @@ const ngrokURL = "https://xth9xnbt-5000.inc1.devtunnels.ms/";
 const App = () => {
   return (
     <BrowserRouter>
-      <div>
-        <Appbar />
-      </div>
-      <div className="flex  bg-black  border-b-black pb-2 justify-center">
-        <BottomWarning buttonText={"Anterior Cruciate Ligament"} to={"/acl"}></BottomWarning>
-        <BottomWarning buttonText={"Brain Tumor"} to={"/"}></BottomWarning>
-        <BottomWarning buttonText={"Alzheimer"} to={"/alz"}></BottomWarning>
-        <BottomWarning buttonText={"Kidney Tumor"} to={"/kidenyStone"}></BottomWarning>
-      </div>
+   
+       <Routes>
 
-      <Routes>
-        <Route
+       <Route
           path="/"
+          element={<MainPage/>}
+        />
+
+        <Route
+          path="/brain"
           element={
             <BrainTumor
               api_key={api_key_robo}
@@ -58,6 +57,12 @@ const App = () => {
               roboURL={roboURLACL}
               ngrokURL={ngrokURL}
             />
+          }
+        ></Route>
+         <Route
+          path="/main"
+          element={
+            <MainPage></MainPage>
           }
         ></Route>
 
