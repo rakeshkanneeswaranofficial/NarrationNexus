@@ -4,7 +4,7 @@ BottomWarning;
 
 export function MainPage() {
   return (
-    <div className="bg-black h-screen text-white font-mono">
+    <div className="bg-[url('https://static.vecteezy.com/system/resources/previews/003/703/565/non_2x/futuristic-digital-surface-space-blank-gray-black-color-background-with-white-grid-space-line-color-surfaces-vector.jpg')] h-screen text-white font-mono">
       <div className=" flex flex-col">
         <div>
           <h1 className="text-yellow-300 text-center font-mono font-bold  py-10 text-8xl">

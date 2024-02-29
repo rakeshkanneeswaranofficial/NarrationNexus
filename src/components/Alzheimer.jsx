@@ -1,204 +1,165 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Appbar } from "./topbar";
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-function BrainTumor({ api_key, roboURL, ngrokURL }) {
-  const [selectedFile, setSelectedFile] = useState(null);
+export default function BrainTumor({ api_key, roboURL, ngrokURL }) {
+  //defening the states
+  const [userSelectedFile, setUserSelectedFile] = useState(null);
+  const [leftImage, setLeftImage] = useState(null);
+  const [inference, setInference] = useState("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.");
   const [roboflowResponse, setRoboflowResponse] = useState(null);
-  const [inference, setInference] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
-  const [responseImage, setResponseImage] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [coordinates, setCoordinates] = useState({
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0,
-  });
 
   useEffect(() => {
-    if (
-      coordinates.x !== 0 ||
-      coordinates.y !== 0 ||
-      coordinates.width !== 0 ||
-      coordinates.height !== 0
-    ) {
-      setLoading(true); // Set loading to true
+    async function segmentationFucntion() {
+      if (!leftImage || !roboflowResponse) {
+        console.log(
+          "Either left image is not available or robloflow response is not available"
+        );
+      } else {
+        console.log("segmetaton fuction ran");
 
-      axios({
-        method: "POST",
-        url: ngrokURL,
-        data: {
-          base64: imageUrl,
-          disease: "Alzheimer",
-          predictions: roboflowResponse,
-        },
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => {
-          console.log(response.data);
-          setInference(response.data.inference);
-          setResponseImage(response.data.base64);
-          setLoading(false); // Reset loading when response is received
-        })
-        .catch((error) => {
-          console.log(error.message);
-          setLoading(false); // Reset loading if there's an error
+        const response = await axios({
+          method: "POST",
+          url: ngrokURL,
+          data: {
+            base64: leftImage,
+            disease: "Alzheimer",
+            predictions: roboflowResponse,
+          },
+          headers: {
+            "Content-Type": "application/json",
+          },
         });
-    }
-  }, [roboflowResponse, imageUrl, coordinates]);
 
-  const onFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+        console.log(response.data)
+        setLeftImage(response.data.base64)
+        setInference(response.data.inference)
+      }
+    }
+
+    segmentationFucntion();
+  },
+    [roboflowResponse]);
+
+  function onFileChange(event) {
+    setUserSelectedFile(event.target.files[0]);
+    console.log(setUserSelectedFile);
     // Reset coordinates when a new file is selected
-    setCoordinates({
-      x: 0,
-      y: 0,
-      width: 0,
-      height: 0,
-    });
-  };
+  }
 
-  const renderInference = () => {
-    if (inference) {
-      // Replace asterisks with commas
-      const formattedInference = inference.replace(/\*/g, ',');
-
-      // Split the formatted inference at full stops and map each part to a paragraph element
-      return formattedInference.split('.').map((sentence, index) => (
-        <React.Fragment key={index}>
-          <p>{sentence.trim()}{index !== formattedInference.split('.').length - 1 && '.'}</p>
-        </React.Fragment>
-      ));
-    }
-    return null;
-  };
-
-  const onFileUpload = async () => {
-    if (!selectedFile) {
-      alert("Please select a file before upload");
+  async function onProcess() {
+    if (!leftImage) {
+      toast.error("Please upload a file before processing ");
       return;
-    }
-
-    setLoading(true); // Set loading state when uploading file
-
-    const reader = new FileReader();
-    reader.readAsDataURL(selectedFile);
-
-    reader.onloadend = async () => {
-      let base64Data = reader.result;
-      base64Data = base64Data.replace(/^data:image\/[a-z]+;base64,/, "");
-
-      setImageUrl(base64Data);
-      setInference(null);
-
-      await axios({
+    } else {
+      const response = await axios({
         method: "POST",
         url: roboURL,
         params: {
           api_key: api_key,
         },
-        data: base64Data,
+        data: leftImage,
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-      })
-        .then(function (response) {
-          setRoboflowResponse(JSON.stringify(response.data));
-          console.log(response.data);
-          setCoordinates({
-            // x: response.data.predictions[0]["x"],
-            y: response.data.predictions[0]["y"],
-            width: response.data.predictions[0]["width"],
-            height: response.data.predictions[0]["height"],
-          });
-          setResponseImage(response.data.base64);
-          setLoading(false); // Reset loading state when image is loaded
-        })
-        .catch(function (error) {
-          console.log(error.message);
-          setLoading(false); // Reset loading state if there's an error
-        });
-    };
-  };
+      });
 
-  const fileData = () => {
-    if (selectedFile) {
-      return (
-        <div>
-          <div>File Details:</div>
+      if (response.data) {
+        toast.success("recived Model Response");
+        toast.info("request send to segmetation server ")
+        console.log(response.data);
+        setRoboflowResponse(JSON.stringify(response.data));
+        
+      }
 
-          <p>File Type: {selectedFile.type}</p>
-          <p>
-            Last Modified: {selectedFile.lastModifiedDate.toDateString()}
-          </p>
-        </div>
-      );
-    } else {
-      return (
-        <div className="font-bold">
-          <br />
-          <h4>Choose before Pressing the Upload button</h4>
-        </div>
-      );
+      else {
+        toast.error("something went wrong with the model")
+      }
+
+      
+      
     }
-  };
+  }
+
+  async function onFileUpload() {
+    if (!userSelectedFile) {
+      toast.error("Select a file before uploading.");
+      return;
+    }
+
+    console.log("File upload started");
+
+    const reader = new FileReader();
+
+    // Add an event listener to handle the completion of the read operation
+    reader.onload = function () {
+      let base64Data = reader.result;
+      base64Data = base64Data.replace(/^data:image\/[a-z]+;base64,/, "");
+      setLeftImage(base64Data);
+      setInference(null);
+    };
+
+    // Read the file as a data URL
+    reader.readAsDataURL(userSelectedFile);
+  }
 
   return (
-    
-   <div>
+    <div className="flex flex-col h-full  ">
+      <div>
+        <Appbar></Appbar>
+      </div>
 
-    <div>
-      <Appbar></Appbar>
-    </div>
-     <div className="bg-white h-screen p-10 text-center">
-      <div className="container mx-auto  relative h-full">
-        <div className="text-start flex flex-row justify-between">
-          <div>
-            {imageUrl && (
+      <div className="flex flex-row justify-between items-stretch py-10 px-10 space-x-20 bg- ">
+        <div className="w-1/2   flex flex-col text-center justify-center  space-y-3  ">
+          <div className=" rounded-lg border-black border-4 text-xl bold font-mono font-bold bg-slate-100">
+            <h1>findings</h1>
+          </div>
+          <div className="bg-slate-100 flex justify-center items-center py-5 h-full border-black border-4 rounded-lg">
+            {!leftImage ? (
+              <img className=" w-96 h-96 " src="src/assets/images.png" />
+            ) : (
               <img
                 className="mt-8 w-min h-96"
-                src={`data:image/jpeg;base64,${!responseImage ? imageUrl : responseImage
-                  }`}
+                src={`data:image/jpeg;base64,${
+                  leftImage
+                }`}
                 alt="Uploaded"
               />
             )}
-            {fileData()}
-          </div>
-
-          <div className="w-1/2 text-xl rounded-lg overflow-y-scroll shadow-2xlh-1/2 -translate-y-6 ">
-            <div className="bg-white bg-opacity-25 border font-bold border-black  border-4  rounded-lg p-2 mb-6">
-              Please note the following inference
-            </div>
-            <div className="2bg-white bg-opacity-25 border min-h-96 border-black text-black border-4 rounded-lg p-2">
-              {!responseImage && loading && (
-                <div className="w-full mt-4 animate-pulse h-96 bg-slate-400 rounded-lg"></div>
-              )}
-              {renderInference()}
-
-            </div>
           </div>
         </div>
 
-        <div className="flex flex-col space-y-4 absolute bottom-40 left-0 w-full">
-          <input
-            className="rounded-sm ml-auto"
-            type="file"
-            onChange={onFileChange}
-          />
-          <button
-            className="bg-slate-950 text-white w-30 px-4 py-2 rounded mx-96"
-            onClick={onFileUpload}
-          >
-            Upload!
-          </button>
+        <div className="w-1/2   flex flex-col text-center justify-center  space-y-3  ">
+          <div className=" rounded-lg border-black border-4 font-mono font-bold text-xl bg-slate-100">
+            <h1>inference</h1>
+          </div>
+          <div className="bg-slate- flex justify-center items-center py-5 h-full rounded-lg border-black border-4 font-mono bg-slate-100">
+            {inference}
+          </div>
         </div>
       </div>
+
+      <div className="flex flex-row space-y-4 justify-center">
+        <input
+          className="bg-slate-950 text-white w-30 px-4 py-2 rounded mx-4"
+          type="file"
+          onChange={onFileChange}
+        />
+        <button
+          className="bg-slate-950 text-white w-30 px-4 py-2 rounded mx-4"
+          onClick={onFileUpload}
+        >
+          Upload Image
+        </button>
+        <button
+          className="bg-slate-950 text-white w-30 px-4 py-2 rounded mx-4"
+          onClick={onProcess}
+        >
+          Process Image
+        </button>
+      </div>
     </div>
-   </div>
   );
 }
-
-export default BrainTumor;
