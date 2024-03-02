@@ -4,11 +4,11 @@ BottomWarning;
 
 export function MainPage() {
   return (
-    <div className="bg-[url('https://static.vecteezy.com/system/resources/previews/003/703/565/non_2x/futuristic-digital-surface-space-blank-gray-black-color-background-with-white-grid-space-line-color-surfaces-vector.jpg')] h-screen text-white font-mono">
+    <div className=" h-screen  bg-gradient-to-r from-red-400 via-yellow-400 to-green-400 ">
       <div className=" flex flex-col">
         <div>
-          <h1 className="text-yellow-300 text-center font-mono font-bold  py-10 text-8xl">
-            Introducing RadixAI
+          <h1 className="text-black text-center font-mono font-bold  py-10 text-8xl ">
+            Introducing GOJO.AI
           </h1>
         </div>
 
@@ -17,38 +17,23 @@ export function MainPage() {
         </div>
 
         <div className="text-black px-10 py-10 text-center  ">
-          <h1 className="text-yellow-300 inline-block w-40 h-10 text-2xl rounded-lg  ">
+          <h1 className="text-black  inline-block w-40 h-10 text-2xl rounded-lg  ">
             Get started
           </h1>
 
           <div className="flex justify-center py-5">
             <BottomWarning
-              buttonText={"Detect Brain Tumor"}
+              buttonText={"Start a story"}
               to={"/brain"}
             ></BottomWarning>
-            <BottomWarning
-              buttonText={"Detect Alzheimer"}
-              to={"/alz"}
-            ></BottomWarning>
+            
           </div>
         </div>
 
-        <div className="flex justify-center text-xl font-bold  ">
-        <ul className="space-y-5">
-            <li>
-              Developed an advanced machine learning model trained on a dataset
-              of over 10,000 medical images.
-            </li>
-            <li>
-              Achieved an outstanding accuracy rate of 98% in detecting brain
-              tumors and Alzheimer's disease.
-            </li>
-            <li>
-              Pioneered the development of a cutting-edge segmentation
-              algorithm for precise and efficient medical image analysis.
-            </li>
-           
-          </ul>
+        <div >
+        <h1 className="text-black  text-center font-mono font-bold  py-10 text-4xl ">
+        Powered by Ollama LLaVA computer vision model  and davinci with AWS Content delivery network
+        </h1>
         </div>
       </div>
     </div>
