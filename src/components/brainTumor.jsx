@@ -87,7 +87,7 @@ export default function BrainTumor({ api_key, roboURL, ngrokURL }) {
     // Send the JSON payload
     const response2 = await axios({
         method: "POST",
-        url: "https://xth9xnbt-5000.inc1.devtunnels.ms/",
+        url: "http://127.0.0.1:5000",
         data: payloadJson, // Send the JSON stringified payload
         headers: {
             "Content-Type": "application/json",
