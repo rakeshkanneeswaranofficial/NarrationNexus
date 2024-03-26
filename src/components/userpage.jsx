@@ -4,7 +4,7 @@ import { Appbar } from "./topbar";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function BrainTumor({ api_key, roboURL, ngrokURL }) {
+export default function Userpage() {
   //defening the states
   const [userSelectedFile, setUserSelectedFile] = useState(null);
   const [imageArray, setImageArray] = useState([]);

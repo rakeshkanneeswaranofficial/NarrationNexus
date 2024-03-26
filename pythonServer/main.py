@@ -7,7 +7,7 @@ API_URL = "https://api-inference.huggingface.co/models/ogkalu/Comic-Diffusion"
 headers = {"Authorization": "Bearer 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"}
 
 app = Flask(__name__)
-CORS(app ,resources={r"/*": {"origins": "*"}})
+CORS(app, support_credentials = True)
 
 @app.route('/process_image', methods=['POST'])
 def process_image():
@@ -39,4 +39,4 @@ def process_image():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=4000, debug=True)
