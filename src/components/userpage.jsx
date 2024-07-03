@@ -33,35 +33,6 @@ export default function Userpage() {
     }
   }
 
-  async function onProcess() {
-    if (!leftImage) {
-      toast.error("Please upload a file before processing ");
-      return;
-    } else {
-      toast.info("sending the image to server ");
-      const response = await axios({
-        method: "POST",
-        url: "http://127.0.0.1:5000/process_image",
-        data: {
-          image_base64: leftImage,
-        },
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      console.log(response.data.response);
-      setInference(response.data.response);
-
-      if (response.data) {
-        toast.success("Response from Model Received ");
-        console.log(response.data);
-        setRoboflowResponse(JSON.stringify(response.data));
-      } else {
-        toast.error("something went wrong with the model");
-      }
-    }
-  }
 
  async function checkarrrat() {
   if (!imageArray){

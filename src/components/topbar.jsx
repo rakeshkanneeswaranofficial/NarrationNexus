@@ -19,7 +19,7 @@ export const Appbar = () => {
         {/* <BottomWarning buttonText={"Anterior Cruciate Ligament"} to={"/acl"}></BottomWarning> */}
        
         {/* <BottomWarning buttonText={"Kidney Tumor"} to={"/kidenyStone"}></BottomWarning> */}
-        <BottomWarning  buttonText={"Main Page"} to={"/main"}>      </BottomWarning>
+        <BottomWarning  buttonText={"Main Page"} to={"/main"}>   </BottomWarning>
       </div>
 
    </div>
